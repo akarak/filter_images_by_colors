@@ -44,11 +44,15 @@ def count_acceptable_colors_percent_in_buffer(img_bgr: cv2.typing.MatLike, perce
 
 
 def count_acceptable_colors_percent_in_file(filepath: pathlib.Path, percent: int = 20) -> float:
-    """Вычисление доли подходящих цветов в файле
+    """
+    Вычисление доли подходящих цветов в файле
 
-    Параметры:
-    filepath -- путь к файлу с изображением
-    percent -- "ширина" hue подходящих цветов (по умолчанию 20%), 0 - сам цвет и оттенки.
+    Args:
+        filepath (pathlib.Path): Путь к файлу с изображением
+        percent (int): "Ширина" hue подходящих цветов (по умолчанию 20%). Если значение равно 0, то используется только сам цвет и его оттенки.
+
+    Returns:
+        float: Доля подходящих цветов в файле
     """
     img = cv2.imdecode(np.fromfile(filepath, dtype=np.uint8), cv2.IMREAD_UNCHANGED)
     return count_acceptable_colors_percent_in_buffer(img, percent)
