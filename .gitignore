@@ -1,0 +1,6 @@
+data/
+research/
+
+.vscode/
+.venv/
+__pycache__/
